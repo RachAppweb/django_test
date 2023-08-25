@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+
+{% block title%}
+changing
+{% endblock %}
+{% block content %}
+<div style="margin: auto;margin-top: auto;text-align: center; margin-top: 35%;
+  ">
+    <form action="{% url 'modify' theonefile.id %} "method="POST">
+        {% csrf_token%}
+       <label for="">change content</label> 
+    
+    {{form.as_p}}
+    <input type="submit" value="submit">
+    </form>
+</div>
+    {% endblock %}

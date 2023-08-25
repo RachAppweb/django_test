@@ -1,0 +1,30 @@
+{% extends 'base.html'%}
+
+{% block title%}
+upload file
+{% endblock %}
+{% block content %}
+   <div style="margin: auto;margin-top: auto;text-align: center; margin-top: 35%;
+  ">
+    <form method="POST" action="{% url 'goes'%}" enctype="multipart/form-data">
+        {% csrf_token%}
+        {{form.file}}
+        <input type="submit">
+      </form>
+      <div>
+
+        <a href="{% url 'allfiles'%}">show the files</a>
+        {%for allfile in allfiles %}
+        <hr>
+        <a href="{% url 'modify' allfile.id %}" style="background-color: greenyellow;">change</a>
+        <p>{{allfile.trans_id}} </p>
+        <p>{{allfile.merchant}} </p>
+        <p>{{allfile.country}} </p>
+        <p>{{allfile.city}} </p>
+        <p>{{allfile.amount}} </p>
+        <p>{{allfile.currency}} </p>
+        <hr>
+        {% endfor%}
+      </div>
+    </div>
+{% endblock %}
